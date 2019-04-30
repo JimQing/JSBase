@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Method Demo</title>
+</head>
+<body>
+    <h1>Vue Method Demo</h1>
+    <hr>
+    <div id="app">
+      
+    </div>
+    <p><button onclick="destroy()">卸载</button></p>  
+    <p><button onclick="reload()">更新</button></p>  
+    <p><button onclick="beTick()">更新数据</button></p>  
+    
+    <script type="text/javascript">
+      var jim = Vue.extend({
+          template:`<p>{{message}}</p>`,
+          data:function(){
+              return {
+                  message:'Hello ,I am jim'
+              }
+          },
+          mounted : function(){
+            console.log('mounted');
+          },
+          destroyed : function(){
+            console.log('destroyed');
+          },
+          updated : function(){
+            console.log('updated');
+          }
+      })
+      //$mount的用法
+      var vm = new jim().$mount("#app")
+
+      function destroy(){
+        //$destroy的用法
+        vm.$destroy();
+      }
+      function reload(){
+        //$destroy的用法
+        vm.$forceUpdate();
+      }
+      function beTick(){
+        vm.message="update message info ";
+        vm.$nextTick(function(){
+            console.log('message更新完后我被调用了');
+        })
+      }
+    </script>
+</body>
+</html>

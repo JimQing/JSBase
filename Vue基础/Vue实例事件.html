@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue event Demo</title>
+</head>
+<body>
+    <h1>Vue event Demo</h1>
+    <hr>
+    <div id="app">
+        <div>{{num}}</div>
+        <p><button @click="add">add</button></p>
+        <p><button onClick="reduce()">reduce</button></p>
+        <p><button onClick="reduceOnce()">reduceOnce</button></p>
+        <p><button onClick="off()">close</button></p>
+    </div>
+    <script type="text/javascript">
+
+      var app = new Vue({
+        el: '#app',
+        data : {
+            num     : 16,
+        },
+        methods : {
+            add : function(num){
+                this.num++;
+            }
+        }
+      })
+      //$on的用法
+      function reduce(){
+        //$emit绑定事件reduce
+        app.$emit('reduce')
+      }
+      app.$on("reduce",function(){
+        console.log('reduce');
+        this.num--;
+      })
+      //$once的用法
+      function reduceOnce(){
+        //$emit绑定事件reduceOnce
+        app.$emit('reduceOnce')
+      }
+      app.$once('reduceOnce',function(){
+        console.log('reduce only once');
+        this.num--;
+      })
+      //$off关闭事件
+      function off(){
+        //关闭了事件reduce和reduceOnce
+         app.$off('reduce');
+         app.$off('reduceOnce');
+
+      }
+
+
+    </script>
+</body>
+</html>

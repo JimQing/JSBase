@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-other 实例</title>
+  </head>
+
+
+  <body>
+    <h1>v-other 实例</h1>
+    <hr>
+    <div id="app">
+        <h2>v-pre实例</h2>
+        <hr>
+            将“{{message}}”原样显示出来
+            <p><div>{{message}}</div>正常显示了。</p>
+            <p><div v-pre>{{message}}</div>文本显示了。</p>
+        <hr>
+        <h2>v-cloak 实例</h2>
+        <hr>
+            <p>当页面渲染完成后才显示内容:</p>
+            <div v-cloak>渲染完成</div>
+
+        <hr>
+        <h2>v-once 实例</h2>
+        <hr>
+            <p><div v-once>(+入了v-once):{{message}}</div></p>
+            <p><div><input type="text" v-model="message"></div></p>
+            <p><div>渲染后(数据绑定不对v-once起作用):{{message}}</div></p>
+        <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data : {
+            message : 'hello world',
+            
+        }
+      })
+
+      
+    </script>
+  </body>
+
+</html>

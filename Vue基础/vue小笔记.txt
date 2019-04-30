@@ -1,0 +1,134 @@
+一.开发vue todolist
+    1.html标签更灵活
+        title : 在标签中书写了title,实现鼠标停靠后显示提示信息的功能;
+        v-if:"isTrue" : 添加此段，若isTrue不为true,则不渲染这段html;
+        v-show:"isTrue": 添加此段，若isTrue不为true,则渲染这段html,但是其css多了 display:none;
+        v-text:"item" : 输出item,但是不支持html标签
+        v-html:"item" : 输出item,但是能支持html标签
+        v-for:"item in items" : items是data中的数据源(一般是一个数组)，item即为其中的一项,用于渲染循环
+            使用方法：<li v-for: "item in items">        
+                        <p v-text="item.text"></p>
+                     </li>
+        v-on:click="doThis"：绑定一个函数同样可以传值(改为doThis(something))
+        v-on:keyup.enter="addNew" ： 绑定一个键，来执行这个addNew的一个函数
+
+        v-bind:class="{red : isRed}"/v-bind:src="imageSrc"
+        v-bind:class="[classA,classB]"/v-bind:class="[classA,{classB: isB,classC:isC}]"
+                    :绑定。
+        示例：
+        <button title="title">hold on me </button> //这样是只会显示title,
+        <button v-bind:title="title">hold on me </button> //显示'i am a button'
+        new Vue({
+            data : {
+                title : 'i am a button'
+            }
+        })
+
+    2. .vue 语法
+        new 一个vue对象你可以设置它的属性，其中最重要的包括三个，分别是data,methods,watch
+
+    3. vue 对象里的data属性
+        data : 用于放置该对象的属性，并提供双向绑定,它代表对象里的数据。
+
+    4. vue 对象里的methods属性
+        methods : 用于放置函数，例如 v-on:click="doThis" 中的doThis。
+
+    5. vue 对象里的watch属性
+        watch ： 用于监听某个属性，并对其变化做出反应。
+        例子：
+        watch : {
+            items : {
+              handler : function(items){
+                Store.save(items);
+              },
+              deep : true
+            }
+          },
+    6. vue里边的components属性
+        vue中通用可以用ES6的import/ES5中的require()引入组件，但是该组件必须注册。
+        这里用到了components
+        import A from './componentA.vue';
+        export default {
+            ...
+            components :  {A} ,
+            ...
+        }
+    7.自定义指令有五个生命周期（也叫钩子函数）
+      分别是 bind,inserted,update,componentUpdated,unbind
+            bind:只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个绑定时执行一次的初始化动作。
+            inserted:被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于document中）。
+            update:被绑定于元素所在的模板更新时调用，而无论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新。
+            componentUpdated:被绑定元素所在模板完成一次更新周期时调用。
+            unbind:只调用一次，指令与元素解绑时调用。
+                bind:function(){//被绑定
+                     console.log('1 - bind');
+                },
+                inserted:function(){//绑定到节点
+                      console.log('2 - inserted');
+                },
+                update:function(){//组件更新
+                      console.log('3 - update');
+                },
+                componentUpdated:function(){//组件更新完成
+                      console.log('4 - componentUpdated');
+                },
+                unbind:function(){//解绑
+                      console.log('1 - bind');
+    8.Vue自带十个生命周期(也称为钩子函数)
+            添加在new Vue的函数里边
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    message:1
+                },
+                methods:{
+                    jia:function(){
+                        this.message ++;
+                    }
+                },
+                beforeCreate:function(){
+                    console.log('1-beforeCreate 初始化之前');
+                },
+                // 加载loading动画的位置
+                created:function(){
+                    console.log('2-created 创建完成');
+                },
+                beforeMount:function(){
+                    console.log('3-beforeMount 挂载之前');
+                },
+                // 加载结束动画 jQuery和Vue同时使用时,要在Vue此处mounted之后才可以使用jQuery
+                mounted:function(){
+                    console.log('4-mounted 被挂载之后');
+                    //使用jQuery
+                    $('#app').html('我是jQuery');
+                },
+                beforeUpdate:function(){
+                    console.log('5-beforeUpdate 数据更新前');
+                },
+                updated:function(){
+                    console.log('6-updated 被更新后');
+                },
+                activated:function(){
+                    console.log('7-activated');
+                },
+                deactivated:function(){
+                    console.log('8-deactivated');
+                },
+                beforeDestroy:function(){
+                    console.log('9-beforeDestroy 销毁之前');
+                },
+                destroyed:function(){
+                    console.log('10-destroyed 销毁之后')
+                }
+            });
+                
+二.开发vue todolist遇到的问题
+    1.使用上线版本即，npm run build ,index.html,资源文件指向出错
+        解决方法： 通过修改config文件中的index.js中的path中的assetsPath
+        // Paths
+            assetsRoot: path.resolve(__dirname, '../dist'),
+            assetsSubDirectory: 'static',
+            assetsPublicPath: './',     // 此处即为相关资源文件前缀，即生成的index.html文件中的url，系统默认为‘/’
+                                        // 导致build后直接打开报空文件，而我加了个.，使得资源正确链接
+                                        // 但我认为它或许要求给全路径？？？
+    2...敬请期待

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue solt Demo</title>
+</head>
+<body>
+    <h1>Vue solt Demo</h1>
+    <hr>
+    <div id="app">
+      <!-- slot的用法,先在组件中用key-Value方式 -->
+        <jimqing>
+          <span slot="bolgUrl">{{jimqingData.bolgUrl}}</span>
+          <span slot="netName">{{jimqingData.netName}}</span>
+          <span slot="skill">{{jimqingData.skill}}</span>
+        <jimqing />      
+    </div>
+    <template id="tep">
+      <!-- slot使用 -->
+      <div>
+        <p>BlogUrl: <slot name="bolgUrl"></slot></p>
+        <p>netName: <slot name="netName"></slot></p>
+        <p>skill: <slot name="skill"></slot></p>
+      </div>
+    </template>
+    <script type="text/javascript">
+      var jimqing = {
+        template : '#tep'
+
+      }
+      var app = new Vue({
+        el: '#app',
+        data : {
+            num     : 16,
+            jimqingData : {
+              bolgUrl : 'http://www.jimqing.xin',
+              netName : 'jimqing',
+              skill   : 'web前端'
+            }
+        },
+        components : {
+          'jimqing' : jimqing
+        },
+        methods : {
+            add : function(num){
+                this.num++;
+            }
+        }
+      })
+    </script>
+</body>
+</html>

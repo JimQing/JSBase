@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue.mothods传值 实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+
+  <body>
+    <h1>vue.mothods传值 实例</h1>
+    <hr>
+    <div id="app">
+      {{count}}
+      <p><button @click="add(2)">add</button></p>
+      <p><btn @click.native="add(2)"></btn></p>
+      <!-- 添加.native(原生/原始)可以使组件调用父组件方法 -->
+      <p><button onClick="app.add(2)">外部add调用</button></p>
+        <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+   
+    </div>
+
+    
+    <script type="text/javascript">
+      var btn = {
+        template : '<button>btn组件ADD</button>'
+      }
+      var app = new Vue({
+        el   : '#app',
+        data : {
+          count : 1,
+        },
+        components : {
+          "btn" : btn
+        },
+        methods : {
+          add : function(num){
+            this.count+=num;
+          }
+        }
+      })
+    </script>
+  </body>
+
+</html>

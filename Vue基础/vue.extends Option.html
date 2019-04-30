@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue.extends Option 混入实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+
+  <body>
+    <h1>vue.extends Option 实例</h1>
+    <hr>
+    <div id="app">
+      <p>今天的温度：{{wendu}} °C</p>
+      <p>今天的温度：${wendu} °C</p>
+      <p><button @click="add">add</button></p>
+      <p><button @click="reduce">reduce</button></p>
+        <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+    
+    </div>
+
+    
+    <script type="text/javascript">
+      var aaa = {
+        updated : function(){
+          console.log('扩展出来的updated');
+        },
+        methods: {
+          reduce : function(){
+            console.log('我是扩展的方法');
+            this.wendu--;
+          }
+        }
+      }
+      var app = new Vue({
+        el   : '#app',
+        data : {
+          wendu : 16
+        },
+        updated : function(){
+          console.log('原生出来的updated');
+        },
+        methods : {
+          add : function(){
+            console.log('我是原生的方法');
+            this.wendu++;
+          },
+        },
+        extends:aaa,
+        //可以使原来的{{wendu}}写成${wendu},而{{wendu}}变成了‘{{wendu}}’
+        delimiters:['${','}']
+        
+
+      })
+    </script>
+  </body>
+
+</html>

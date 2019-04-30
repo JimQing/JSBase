@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>propsData 实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+
+  <body>
+    <h1> propsData 实例 </h1>
+    <hr>
+    <div id="app">
+        
+        <header></header>
+       
+    </div>
+    <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+
+        
+    <script type="text/javascript">
+      var header_a = Vue.extend({
+        template : '<p>{{message}}-{{a}}</p>',
+        data : function(){
+          return{
+            message : 'hello i am header'
+          }
+        },
+        //通过props接受
+        props:['a']
+      });
+      //通过propsData传值
+      new header_a({propsData : {a:1}}).$mount('header');
+
+
+    </script>
+  </body>
+
+</html>

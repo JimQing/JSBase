@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue.watch 实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+
+  <body>
+    <h1>vue.watch 实例</h1>
+    <hr>
+    <div id="app">
+      <p>今天的温度：{{wendu}} °C</p>
+      <p>穿衣建议: {{chuanyi}}</p>
+      <p><button @click="shenggao">升高</button></p>
+      <p><button @click="jiangdi">降低</button></p>
+        <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+    
+    </div>
+
+    
+    <script type="text/javascript">
+      var chuangyiArray=['T恤短裙','夹克长裙','棉衣羽绒'];
+      var app = new Vue({
+        el   : '#app',
+        data : {
+          wendu   : 27,
+          chuanyi : chuangyiArray[0]
+        },
+        methods : {
+          shenggao : function(){
+            this.wendu+=3;
+          },
+          jiangdi : function(){
+            this.wendu-=3;
+          }
+        },
+        watch : {
+          wendu : function(newVal,oldVal){
+            if(newVal>=26){
+              this.chuanyi=chuangyiArray[0];
+            }else if(newVal<26 && newVal>5){
+              this.chuanyi=chuangyiArray[1];
+            }else if(newVal<5){
+              this.chuanyi=chuangyiArray[2];
+            }
+          }
+        }
+      })
+      // 另一种写法
+      app.$watch('wendu',function(newVal,oldVal){
+            if(newVal>=26){
+              this.chuanyi=chuangyiArray[0];
+            }else if(newVal<26 && newVal>5){
+              this.chuanyi=chuangyiArray[1];
+            }else if(newVal<5){
+              this.chuanyi=chuangyiArray[2];
+            }
+          });
+    </script>
+  </body>
+
+</html>

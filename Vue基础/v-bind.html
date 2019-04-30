@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-bind 实例</title>
+  </head>
+
+  <body>
+    <h1>v-bind 实例</h1>
+    <hr>
+    <div id="app">
+        <p><img v-bind:src=imgSrc alt=""></p>
+        <p><a v-bind:href=webUrl target="_blank">jimqing.xin</a></p>
+        <hr>
+        <div v-bind:class="classNameA">1.绑定class</div>
+        <div v-bind:class="classNameB">2.绑定class</div>
+        <div v-bind:class="{classA : isOK}">3.绑定class+判断</div>
+        <div v-bind:class="{classB : isOK}">4.绑定class+判断</div>
+        <div v-bind:class="[classA,classB]">4.绑定class+重叠class</div>
+        <div v-bind:class="isOK?classA:classB">5.绑定class+三元表达式</div>
+        <div :style="styleObject">6.对象绑定</div>
+
+        <div>
+            <input type="checkbox" id="isOK" v-model="isOK">
+            <label for="isOK">{{isOK}}</label>
+        </div>
+        <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+       
+
+
+    </div>
+    
+    <style>
+        .classA{
+            color: red;
+        }
+        .classB{
+            font-size: 200%
+        }
+    </style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data : {
+            message    : 'hello world',
+            imgSrc     : './logo.png',
+            webUrl     : 'http://jimqing.xin',
+            classNameA  : 'classA',
+            classNameB  : 'classB',
+            isOK        : false,
+            // v-bind:class="[classA,classB]"则需要添加
+            classA : 'classA',
+            classB : 'classB',
+            styleObject : {
+                fontSize : "150px",
+                color    : "green"
+            }
+        }
+      })
+    </script>
+  </body>
+
+</html>

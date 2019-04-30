@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>构造器的声明周期</title>
+</head>
+<body>
+    <h1>构造器的声明周期</h1>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <hr>
+    <div id="app">
+        {{message}}
+        <p><button @click="jia">加分</button></p>
+    
+        <button onclick="app.$destroy()">销毁</button>
+    <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:1
+            },
+            methods:{
+                jia:function(){
+                    this.message ++;
+                }
+            },
+            beforeCreate:function(){
+                console.log('1-beforeCreate 初始化之前');
+            },
+            // 加载loading动画的位置
+            created:function(){
+                console.log('2-created 创建完成');
+            },
+            beforeMount:function(){
+                console.log('3-beforeMount 挂载之前');
+            },
+            // 加载结束动画的位置
+            mounted:function(){
+                console.log('4-mounted 被挂载之后');
+            },
+            beforeUpdate:function(){
+                console.log('5-beforeUpdate 数据更新前');
+            },
+            updated:function(){
+                console.log('6-updated 被更新后');
+            },
+            activated:function(){
+                console.log('7-activated');
+            },
+            deactivated:function(){
+                console.log('8-deactivated');
+            },
+            beforeDestroy:function(){
+                console.log('9-beforeDestroy 销毁之前');
+            },
+            destroyed:function(){
+                console.log('10-destroyed 销毁之后')
+            }
+ 
+        });
+
+    </script>
+</body>
+</html>

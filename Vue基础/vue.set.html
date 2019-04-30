@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue.set 实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+
+  <body>
+    <h1>vue.set 实例</h1>
+    <hr>
+    <div id="app">
+      {{count}}
+      <p><button onClick="add()">add</button></p>
+        <hr>
+        <h1> V标签与API 实例 </h1>
+        <p><a href="./v-model.html">v-model 实例</a></p>
+        <p><a href="./v-bind.html">v-bind 实例</a></p>
+        <p><a href="./v-other.html">v-other 实例</a></p>
+        <p><a href="./vue.directive.html">vue.directive 实例</a></p>
+        <p><a href="./vue.extends.html">vue.extends 实例</a></p>
+        <p><a href="./vue.extends Option.html">vue.extends Option 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Vue.lifeCycle.html">生命周期 实例</a></p>
+        <p><a href="./Vue.computed.html">Vue.computed 实例</a></p>
+        <p><a href="./vue.watch.html">vue.watch 实例</a></p>
+        <p><a href="./vue.set.html">vue.set 实例</a></p>
+        <p><a href="./Mixins.html">mixinsOption 实例</a></p>
+        <p><a href="./propsData.html">propsData 实例</a></p>
+        
+    </div>
+
+    
+    <script type="text/javascript">
+      function add(){
+        // 由于Javascript的限制，Vue不能自动检测以下变动的数组。
+        // *当你利用索引直接设置一个项时，vue不会为我们自动更新。
+        // *当你修改数组的长度时，vue不会为我们自动更新。
+        // 三种方式,由于Vue无法监听所有的变化,所以有了set方法的存在
+        // Vue.set(outData,'count',++outData.count);
+        // app.count++;
+        // app.arr[1]='ddd'; //不识别
+        //Vue.set(app.arr,1,'ddd');
+        outData.count++;
+      }
+      var outData={
+        count : 1,
+        goods : 'car'
+      }
+      var app = new Vue({
+        el   : '#app',
+        data : outData,
+        methods : {
+
+        }
+      })
+    </script>
+  </body>
+
+</html>

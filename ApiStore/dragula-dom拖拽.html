@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dragula</title>
+    <script src='./dragula.js'></script>
+    <link rel="stylesheet" href="./dragula.css">
+    <link rel="stylesheet" href="./reset-2.css">
+    <style>
+        .box_test,
+        .box_test2 {
+            margin: 10px;
+            border: 1px solid #e3e3e3;
+        }
+
+        .box-item {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box_test" id='top'>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+        </div>
+        <div class="box_test2" id='bottom'>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+            <div class="box-item">test</div>
+        </div>
+    </div>
+</body>
+<script>
+    dragula([document.getElementById('top'), document.getElementById('bottom')])
+        .on('drag', function (el) {
+            console.log('drag');
+        }).on('drop', function (el) {
+            console.log('drop');
+        }).on('over', function (el, container) {
+            console.log('over');
+        }).on('out', function (el, container) {
+            console.log('out');
+        });
+</script>
+
+</html>

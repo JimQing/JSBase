@@ -49,7 +49,7 @@ export default {
     },
     //通过 return 拿到this
     provide() {
-        // 使用 Vue.observable 优化响应式 provide
+        // 使用 Vue.observable 优化响应式 provide （失败了）
         this.observable_data = Vue.observable({
             str: '优化后的provide传过去的data'
         });
